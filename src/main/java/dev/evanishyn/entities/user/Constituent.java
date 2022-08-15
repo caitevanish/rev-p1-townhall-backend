@@ -2,12 +2,19 @@ package dev.evanishyn.entities.user;
 
 public class Constituent extends User{
 
-    private Integer constitId;
+    private int constitId;
     private boolean isRegistered;
 
     //Inheriting from User: id, fname, lname, username, password
 
-    public Integer getConstitId() {
+
+    public Constituent(int id, String username, String password, String fName, String lName, int constitId, boolean isRegistered) {
+        super(id, username, password, fName, lName);
+        this.constitId = constitId;
+        this.isRegistered = isRegistered;
+    }
+
+    public int getConstitId() {
         return constitId;
     }
 

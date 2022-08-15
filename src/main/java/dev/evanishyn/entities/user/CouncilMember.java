@@ -2,11 +2,17 @@ package dev.evanishyn.entities.user;
 
 public class CouncilMember extends User {
 
-    private Integer councilMemId;
+    private int councilMemId;
     private String title;
 
     //Inheriting from User: id, fname, lname, username, password
 
+
+    public CouncilMember(int id, String username, String password, String fName, String lName, int councilMemId, String title) {
+        super(id, username, password, fName, lName);
+        this.councilMemId = councilMemId;
+        this.title = title;
+    }
 
     public Integer getCouncilMemId() {
         return councilMemId;

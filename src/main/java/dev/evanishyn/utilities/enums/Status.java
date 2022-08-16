@@ -1,4 +1,4 @@
-package dev.evanishyn.utilities.Status;
+package dev.evanishyn.utilities.enums;
 
 public enum Status {
 

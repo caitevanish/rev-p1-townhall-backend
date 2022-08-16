@@ -1,4 +1,6 @@
-package dev.evanishyn.entities.user;
+package dev.evanishyn.entities;
+
+import dev.evanishyn.utilities.enums.Role;
 
 public class User {
     private int id;
@@ -7,16 +9,20 @@ public class User {
     private String fName;
     private String lName;
 
+    private Role role;
+
 
     public User(){
 
     }
-    public User(int id, String username, String password, String fName, String lName) {
+
+    public User(int id, String username, String password, String fName, String lName, Role role) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.fName = fName;
         this.lName = lName;
+        this.role = role;
     }
 
     public int getId() {
@@ -59,6 +65,14 @@ public class User {
         this.lName = lName;
     }
 
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -67,6 +81,7 @@ public class User {
                 ", password='" + password + '\'' +
                 ", fName='" + fName + '\'' +
                 ", lName='" + lName + '\'' +
+                ", role=" + role +
                 '}';
     }
 }

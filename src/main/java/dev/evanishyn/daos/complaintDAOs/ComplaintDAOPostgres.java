@@ -6,8 +6,7 @@ import dev.evanishyn.utilities.enums.Priority;
 import dev.evanishyn.utilities.enums.Status;
 
 import java.sql.*;
-import java.util.HashMap;
-import java.util.Map;
+
 
 public class ComplaintDAOPostgres implements ComplaintDAO{
 
@@ -16,7 +15,8 @@ public class ComplaintDAOPostgres implements ComplaintDAO{
     public Complaint createComplaint(Complaint complaint) {
         try(Connection conn = ConnectionUtil.createConnection()){
             String sql = "insert into complaint values(default, ?, ?, ?, default)";
-            PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS); //check for null pointer exception!
+            PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            //check for null pointer exception!
 
             ps.setString(1, complaint.getDescription());//description
             ps.setString(2, Status.PENDING.name());     //status
@@ -29,7 +29,7 @@ public class ComplaintDAOPostgres implements ComplaintDAO{
 
             int generateKey = rs.getInt("complaint_id");
             complaint.setId(generateKey);
-            complaint.setStatus(Status.PENDING);
+//            complaint.setStatus(Status.PENDING);
             return complaint;
 
         }catch(SQLException e){

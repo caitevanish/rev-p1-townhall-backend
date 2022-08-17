@@ -1,4 +1,4 @@
-package dev.evanishyn.handlers.complaints;
+package dev.evanishyn.handlers.complaint;
 
 import com.google.gson.Gson;
 import dev.evanishyn.app.App;
@@ -19,5 +19,5 @@ public class CreateNewComplaintHandler implements Handler {
     ctx.status(201);
     ctx.result("Complaint has been submitted: \n" + newJson);
 }
-
+//throw an exception
 }

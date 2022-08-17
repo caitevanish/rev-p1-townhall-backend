@@ -19,7 +19,7 @@ public class ComplaintServiceTests {
     @Test
     void create_complaint_sTest(){
         Complaint newComplaint = new Complaint(0, "The neighbor's owls are too loud", Status.PENDING, Priority.TBD, 0);
-        Complaint savedComplaint = complaintDAO.createComplaint(newComplaint);
+        Complaint savedComplaint = complaintService.createComplaint(newComplaint);
         Assertions.assertEquals("PENDING", savedComplaint.getStatus().name());
 
         //When I get meeting id from db it is saying it's 0, not -1

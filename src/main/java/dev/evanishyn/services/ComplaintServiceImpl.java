@@ -16,8 +16,8 @@ public class ComplaintServiceImpl implements ComplaintService {
         //check for id
         if (complaint.getId() != 0) {
             if(complaint.getDescription().length() < 20) {    //check for enough description
-
-            }throw new RuntimeException("Need a more detailed description");
+                throw new RuntimeException("Need a more detailed description");
+            }
         }
         return this.complaintDAO.createComplaint(complaint);
 

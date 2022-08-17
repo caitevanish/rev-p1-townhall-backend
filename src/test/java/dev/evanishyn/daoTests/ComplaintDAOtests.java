@@ -61,8 +61,9 @@ public class ComplaintDAOtests {
     static ComplaintDAOPostgres complaintDAO = new ComplaintDAOPostgres();
 
     //-----post-----
+
     @Test
-    @Order(1)
+    @Order(1)   //Passed
     void create_complaint_dTest(){
         Complaint complaint = new Complaint(0, "The neighbors are too loud", Status.PENDING, Priority.TBD, 0);
         Complaint savedComplaint = complaintDAO.createComplaint(complaint);

@@ -7,10 +7,11 @@ import dev.evanishyn.services.ComplaintServiceImpl;
 import dev.evanishyn.services.interfaces.ComplaintService;
 import dev.evanishyn.utilities.enums.Priority;
 import dev.evanishyn.utilities.enums.Status;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import java.util.List;
+
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 
 public class ComplaintServiceTests {
 
@@ -19,6 +20,7 @@ public class ComplaintServiceTests {
 
     //-----post-----
     @Test
+    @Order(1)
     void create_complaint_sTest(){
         Complaint newComplaint = new Complaint(0, "The neighbor's owls are too loud", Status.PENDING, Priority.TBD, 0);
         Complaint savedComplaint = complaintService.createComplaint(newComplaint);
@@ -30,6 +32,7 @@ public class ComplaintServiceTests {
     //-----get [x2]-----
     // 1] get all complaints
     @Test
+    @Order(2)
     void get_all_complaints_sTest(){
         Complaint complaint2 = new Complaint(0, "The construction is messing with the ley lines", Status.PENDING, Priority.TBD, 0);
         Complaint complaint3 = new Complaint(0, "I'm quite sure my neighbor hexed me", Status.PENDING, Priority.TBD, 0);
@@ -43,6 +46,13 @@ public class ComplaintServiceTests {
 
 
     // 2] get complaint by id (Members)
+    @Test
+    @Order(3)
+    void get_complaint_by_id_sTest(){
+        Complaint complaint = complaintDAO.getComplaintById(2);
+        Assertions.assertEquals("The construction is messing with the ley lines", complaint.getDescription());
+    }
+
 
     //-----put-----
 

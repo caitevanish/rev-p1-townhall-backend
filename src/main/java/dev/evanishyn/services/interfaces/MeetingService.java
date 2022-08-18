@@ -9,4 +9,6 @@ public interface MeetingService {
     Meeting createMeeting(Meeting meeting);
 
     List<Meeting> getAllMeetings();
+
+    Meeting getMeetingById(int id);
 }

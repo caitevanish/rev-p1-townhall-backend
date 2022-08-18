@@ -7,6 +7,7 @@ import dev.evanishyn.handlers.complaint.GetAllComplaintsHandler;
 import dev.evanishyn.handlers.complaint.GetComplaintByIdHandler;
 import dev.evanishyn.handlers.meeting.CreateNewMeetingHandler;
 import dev.evanishyn.handlers.meeting.GetAllMeetingsHandler;
+import dev.evanishyn.handlers.meeting.GetMeetingByIdHandler;
 import dev.evanishyn.services.ComplaintServiceImpl;
 import dev.evanishyn.services.MeetingServiceImpl;
 import dev.evanishyn.services.interfaces.ComplaintService;
@@ -45,10 +46,12 @@ public class App {
         //-----------Meeting-----------
         CreateNewMeetingHandler createNewMeetingHandler = new CreateNewMeetingHandler();
         GetAllMeetingsHandler getAllMeetingsHandler = new GetAllMeetingsHandler();
+        GetMeetingByIdHandler getMeetingByIdHandler = new GetMeetingByIdHandler();
 
 
         app.post("/meetings", createNewMeetingHandler);
         app.get("/meetings", getAllMeetingsHandler);
+        app.get("/meetings/{id}", getMeetingByIdHandler);
 
 
 

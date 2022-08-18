@@ -26,8 +26,8 @@ public class MeetingDAOPostgres implements MeetingDAO{
             ResultSet rs = ps.getGeneratedKeys();
             rs.next();
 
-            int generateKey = rs.getInt("id");
-            meeting.setId(generateKey);
+            int generateKey = rs.getInt("meet_id");
+            meeting.setMeet_id(generateKey);
             return meeting;
 
         }catch (SQLException e){
@@ -49,7 +49,7 @@ public class MeetingDAOPostgres implements MeetingDAO{
 
             while(rs.next()){
                 Meeting meeting = new Meeting();
-                meeting.setId(rs.getInt("id"));
+                meeting.setMeet_id(rs.getInt("meet_id"));
                 meeting.setTime(rs.getInt("time"));
                 meeting.setLocation(rs.getString("location"));
                 meeting.setSummary(rs.getString("summary"));
@@ -66,7 +66,7 @@ public class MeetingDAOPostgres implements MeetingDAO{
     @Override
     public Meeting getMeetingById(int id) {
         try (Connection conn = ConnectionUtil.createConnection()) {
-            String sql = "select * from meeting where id = ?";
+            String sql = "select * from meeting where meet_id = ?";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, id);
 
@@ -74,7 +74,7 @@ public class MeetingDAOPostgres implements MeetingDAO{
             rs.next();
 
             Meeting meeting = new Meeting();
-            meeting.setId(rs.getInt("id"));
+            meeting.setMeet_id(rs.getInt("meet_id"));
             meeting.setTime(rs.getInt("time"));
             meeting.setLocation(rs.getString("location"));
             meeting.setSummary(rs.getString("summary"));

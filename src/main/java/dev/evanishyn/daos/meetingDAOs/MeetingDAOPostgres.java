@@ -5,6 +5,9 @@ import dev.evanishyn.utilities.enums.ConnectionUtil;
 import dev.evanishyn.utilities.enums.Status;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class MeetingDAOPostgres implements MeetingDAO{
 
@@ -35,9 +38,34 @@ public class MeetingDAOPostgres implements MeetingDAO{
             return null;
     }
 
-
     //-----get [x2]-----
     // 1] get all meetings
+    @Override
+    public List<Meeting> getAllMeetings() {
+        try(Connection conn = ConnectionUtil.createConnection()){
+            String sql = "select * from meeting";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            List<Meeting> meetingList = new ArrayList<>();
+
+            while(rs.next()){
+                Meeting meeting = new Meeting();
+                meeting.setId(rs.getInt("meet_id"));
+                meeting.setMeet_time(rs.getInt("time"));
+                meeting.setLocation(rs.getString("location"));
+                meeting.setSummary(rs.getString("summary"));
+                meetingList.add(meeting);
+            }
+            return meetingList;
+
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+            return null;
+    }
+
+
 
 
     //-----put-----

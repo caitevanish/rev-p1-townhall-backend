@@ -2,6 +2,8 @@ package dev.evanishyn.daos.meetingDAOs;
 
 import dev.evanishyn.entities.Meeting;
 
+import java.util.List;
+
 public interface MeetingDAO{
 
     //-----post-----
@@ -10,6 +12,7 @@ public interface MeetingDAO{
 
     //-----get [x2]-----
     // 1] get all meetings
+    List<Meeting> getAllMeetings();
 
 
     //-----put-----

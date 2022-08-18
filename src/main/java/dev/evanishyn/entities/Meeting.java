@@ -14,6 +14,10 @@ public class Meeting {
         this.summary = summary;
     }
 
+    public Meeting() {
+
+    }
+
     public int getId() {
         return id;
     }

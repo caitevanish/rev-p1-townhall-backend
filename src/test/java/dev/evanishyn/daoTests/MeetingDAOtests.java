@@ -83,18 +83,28 @@ public class MeetingDAOtests {
 
     //-----get [x2]-----
     // 1] get all meetings
-    @Test
+
+    @Test   //PASSED
     @Order(4)
     void get_all_meetings_dTest(){
-        Meeting meeting = new Meeting(0, 1660675993, "The OTHER Hogshead, Mass.", "Direct all your complaints to the stump on the hill");
-        meetingDAO.createMeeting(meeting);
+        Meeting meeting2 = new Meeting(0, 1660675993, "The OTHER Hogshead, Mass.", "Direct all your complaints to the stump on the hill");
+        Meeting meeting3 = new Meeting(0, 1660675993, "The Silent Banshee", "PDAs: Does and Do Not's");
+        meetingDAO.createMeeting(meeting2);
+        meetingDAO.createMeeting(meeting3);
 
         List<Meeting> meetingList = meetingDAO.getAllMeetings();
-        Assertions.assertEquals(3, meetingList.size());
+        Assertions.assertEquals(4, meetingList.size());
 //        System.out.println(meetingList);
     }
 
+//     2] get meeting by id
 
+    @Test   //PASSED
+    @Order(5)
+    void get_meeting_by_id_dTest(){
+        Meeting meeting = meetingDAO.getMeetingById(3);
+        Assertions.assertEquals("PDAs: Does and Do Not's", meeting.getSummary());
+    }
 
     //-----put-----
     // 1] update meeting date and location

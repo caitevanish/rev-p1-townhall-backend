@@ -14,6 +14,7 @@ public interface ComplaintDAO {
     List<Complaint> getAllComplaints();
 
     // 2] get complaint by id (Members)
+    Complaint getComplaintById(int id);
 
     //-----put-----
 

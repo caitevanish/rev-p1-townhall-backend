@@ -1,6 +1,6 @@
 package dev.evanishyn.daoTests;
 
-import dev.evanishyn.daos.complaintDAOs.ComplaintDAO;
+
 import dev.evanishyn.daos.complaintDAOs.ComplaintDAOPostgres;
 import dev.evanishyn.entities.Complaint;
 import dev.evanishyn.utilities.enums.ConnectionUtil;
@@ -66,8 +66,9 @@ public class ComplaintDAOtests {
 
     //-----get [x2]-----
     // 1] get all complaints
-    @Test
-    @Order(3)   //Passed
+
+    @Test   //Passed
+    @Order(3)
     void get_all_complaints_dTest(){
         Complaint complaint2 = new Complaint(0, "The construction is messing with the ley lines", Status.PENDING, Priority.TBD, 0);
         Complaint complaint3 = new Complaint(0, "I'm quite sure my neighbor hexed me", Status.PENDING, Priority.TBD, 0);
@@ -79,7 +80,14 @@ public class ComplaintDAOtests {
         Assertions.assertEquals(3, complaintList.size());
     }
 
-    // 2] get complaint by id (Members)
+//     2] get complaint by id (Members)
+
+    @Test   //Passed
+    @Order(4)
+    void get_complaint_by_id_dTest(){
+        Complaint complaint = complaintDAO.getComplaintById(2);
+        Assertions.assertEquals("The construction is messing with the ley lines", complaint.getDescription());
+    }
 
 
     //-----patch [x2]-----

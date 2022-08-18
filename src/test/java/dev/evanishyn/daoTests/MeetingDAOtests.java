@@ -60,7 +60,7 @@ public class MeetingDAOtests {
 
     @Test
     @Order(2)
-    void create_default_unsaved_meeting_entry(){
+    void create_default_unsaved_meeting_entry_dTest(){
         try(Connection conn = ConnectionUtil.createConnection()){
             String sql = "insert into meeting values(-1, 0, 'LOCATION TBD2222', 'No meeting agenda yet')";
             Statement st = conn.createStatement();

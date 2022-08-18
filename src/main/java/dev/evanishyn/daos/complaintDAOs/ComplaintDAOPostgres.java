@@ -40,6 +40,8 @@ public class ComplaintDAOPostgres implements ComplaintDAO{
         }
     }
 
+    //-----get [x2]-----
+    // 1] get all complaints
     @Override
     public List<Complaint> getAllComplaints() {
         try (Connection conn = ConnectionUtil.createConnection()) {
@@ -66,12 +68,34 @@ public class ComplaintDAOPostgres implements ComplaintDAO{
         return null;
     }
 
-    //-----get [x2]-----
-    // 1] get all complaints
+    @Override
+    public Complaint getComplaintById(int id) {
+        try (Connection conn = ConnectionUtil.createConnection()){
+            String sql = "select * from complaint where complaint_id = ?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, id);
+
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+
+                Complaint complaint = new Complaint();
+                complaint.setId(rs.getInt("complaint_id"));
+                complaint.setDescription(rs.getString("description"));
+                complaint.setStatus(Status.valueOf(rs.getString("status")));
+                complaint.setPriority(Priority.valueOf(rs.getString("priority")));
+                complaint.setM_id(rs.getInt("m_id"));
+
+                return complaint;
+
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     // 2] get complaint by id (Members)
 
-    //-----put-----
+
 
     //-----patch [x2]-----
     // 1] update status

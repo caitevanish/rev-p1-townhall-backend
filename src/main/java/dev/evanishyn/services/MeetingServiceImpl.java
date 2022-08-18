@@ -4,6 +4,7 @@ import dev.evanishyn.daos.meetingDAOs.MeetingDAO;
 import dev.evanishyn.entities.Meeting;
 import dev.evanishyn.services.interfaces.MeetingService;
 
+import java.util.List;
 
 
 public class MeetingServiceImpl implements MeetingService {
@@ -13,6 +14,7 @@ public class MeetingServiceImpl implements MeetingService {
     public MeetingServiceImpl(MeetingDAO meetingDAO){this.meetingDAO = meetingDAO;}
 
     @Override
+    //Must add that ONLY council member account types can make a meeting
     public Meeting createMeeting(Meeting meeting) {
         if(meeting.getId()!=0){
             if(meeting.getSummary().length()<20){
@@ -21,4 +23,11 @@ public class MeetingServiceImpl implements MeetingService {
         }
         return this.meetingDAO.createMeeting(meeting);
     }
+
+    @Override
+    public List<Meeting> getAllMeetings() {
+        return meetingDAO.getAllMeetings();
+    }
+
+
 }

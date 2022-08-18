@@ -2,12 +2,10 @@ package dev.evanishyn.daos.meetingDAOs;
 
 import dev.evanishyn.entities.Meeting;
 import dev.evanishyn.utilities.enums.ConnectionUtil;
-import dev.evanishyn.utilities.enums.Status;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class MeetingDAOPostgres implements MeetingDAO{
 
@@ -19,7 +17,7 @@ public class MeetingDAOPostgres implements MeetingDAO{
             PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             //possible nullpointer exception here
 
-            ps.setInt(1, meeting.getMeet_time());
+            ps.setInt(1, meeting.getTime());
             ps.setString(2, meeting.getLocation());
             ps.setString(3, meeting.getSummary());
 
@@ -52,7 +50,7 @@ public class MeetingDAOPostgres implements MeetingDAO{
             while(rs.next()){
                 Meeting meeting = new Meeting();
                 meeting.setId(rs.getInt("meet_id"));
-                meeting.setMeet_time(rs.getInt("time"));
+                meeting.setTime(rs.getInt("time"));
                 meeting.setLocation(rs.getString("location"));
                 meeting.setSummary(rs.getString("summary"));
                 meetingList.add(meeting);

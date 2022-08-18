@@ -4,11 +4,13 @@ import dev.evanishyn.daos.complaintDAOs.ComplaintDAOPostgres;
 import dev.evanishyn.daos.meetingDAOs.MeetingDAOPostgres;
 import dev.evanishyn.handlers.complaint.CreateNewComplaintHandler;
 import dev.evanishyn.handlers.meeting.CreateNewMeetingHandler;
+import dev.evanishyn.handlers.meeting.GetAllMeetingsHandler;
 import dev.evanishyn.services.ComplaintServiceImpl;
 import dev.evanishyn.services.MeetingServiceImpl;
 import dev.evanishyn.services.interfaces.ComplaintService;
 import dev.evanishyn.services.interfaces.MeetingService;
 import io.javalin.Javalin;
+import io.javalin.http.Handler;
 
 public class App {
 
@@ -16,10 +18,12 @@ public class App {
     public static MeetingService meetingService = new MeetingServiceImpl(new MeetingDAOPostgres());
 
     public static void main(String[] args) {
-        Javalin app = Javalin.create(config->{
-
-            config.enableCorsForAllOrigins();
+        Javalin app = Javalin.create(config->{  //Statement lambda can be replaced with expression lambda
+            config.enableCorsForAllOrigins();   //Lambda can be replaced with method reference
         });
+        //wrap a try-with resources statement
+
+
 
 
         //-----------Account User-----------
@@ -36,9 +40,13 @@ public class App {
 
         //-----------Meeting-----------
         CreateNewMeetingHandler createNewMeetingHandler = new CreateNewMeetingHandler();
-
+        GetAllMeetingsHandler getAllMeetingsHandler = new GetAllMeetingsHandler();
 
         app.post("/meetings", createNewMeetingHandler);
+        app.get("/meetings", getAllMeetingsHandler);
+
+
+
 
         app.start();
     }

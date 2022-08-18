@@ -2,14 +2,14 @@ package dev.evanishyn.entities;
 
 public class Meeting {
     private int id;
-    private int meet_time;
+    private int time;
     private String location;
     private String summary;
 
 
-    public Meeting(int id, int meet_time, String location, String summary) {
+    public Meeting(int id, int time, String location, String summary) {
         this.id = id;
-        this.meet_time = meet_time;
+        this.time = time;
         this.location = location;
         this.summary = summary;
     }
@@ -26,12 +26,12 @@ public class Meeting {
         this.id = id;
     }
 
-    public int getMeet_time() {
-        return meet_time;
+    public int getTime() {
+        return time;
     }
 
-    public void setMeet_time(int meet_time) {
-        this.meet_time = meet_time;
+    public void setTime(int time) {
+        this.time = time;
     }
 
     public String getLocation() {
@@ -54,7 +54,7 @@ public class Meeting {
     public String toString() {
         return "Meeting{" +
                 "id=" + id +
-                ", meet_time=" + meet_time +
+                ", time=" + time +
                 ", location='" + location + '\'' +
                 ", summary='" + summary + '\'' +
                 '}';

@@ -48,7 +48,7 @@ public class MeetingDAOtests {
     @Order(1)
     void setup_meeting(){
         try(Connection conn = ConnectionUtil.createConnection()){
-            String sql = "create table meeting(meet_id serial primary key, time int default -1, location varchar (100), summary varchar (2000) not null)";
+            String sql = "create table meeting(id serial primary key, time int default -1, location varchar (100), summary varchar (2000) not null)";
             Statement st = conn.createStatement();  //Check for null pointer Exception!
             st.execute(sql);
         }catch(SQLException e){

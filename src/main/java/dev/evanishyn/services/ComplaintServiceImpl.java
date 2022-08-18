@@ -26,16 +26,24 @@ public class ComplaintServiceImpl implements ComplaintService {
 //        throw new RuntimeException("The id for complaint is no good");
     }
 
+    //-----get [x2]-----
+    // 1] get all complaints
+
     @Override
     public List<Complaint> getAllComplaints() {
         return complaintDAO.getAllComplaints();
     }
 
 
-    //-----get [x2]-----
-    // 1] get all complaints
-
     // 2] get complaint by id (Members)
+
+    @Override
+    public Complaint getComplaintById(int id) {
+        return complaintDAO.getComplaintById(id);
+    }
+
+
+
 
     //-----put-----
 

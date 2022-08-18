@@ -4,6 +4,7 @@ import dev.evanishyn.daos.complaintDAOs.ComplaintDAOPostgres;
 import dev.evanishyn.daos.meetingDAOs.MeetingDAOPostgres;
 import dev.evanishyn.handlers.complaint.CreateNewComplaintHandler;
 import dev.evanishyn.handlers.complaint.GetAllComplaintsHandler;
+import dev.evanishyn.handlers.complaint.GetComplaintByIdHandler;
 import dev.evanishyn.handlers.meeting.CreateNewMeetingHandler;
 import dev.evanishyn.handlers.meeting.GetAllMeetingsHandler;
 import dev.evanishyn.services.ComplaintServiceImpl;
@@ -34,10 +35,11 @@ public class App {
         //-----------Complaint-----------
         CreateNewComplaintHandler createNewComplaintHandler = new CreateNewComplaintHandler();
         GetAllComplaintsHandler getAllComplaintsHandler = new GetAllComplaintsHandler();
-
+        GetComplaintByIdHandler getComplaintByIdHandler = new GetComplaintByIdHandler();
 
         app.post("/complaints", createNewComplaintHandler);
         app.get("/complaints", getAllComplaintsHandler);
+        app.get("/complaints/{id}", getComplaintByIdHandler);
 
 
         //-----------Meeting-----------

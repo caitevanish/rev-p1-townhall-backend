@@ -4,6 +4,8 @@ import dev.evanishyn.daos.complaintDAOs.ComplaintDAO;
 import dev.evanishyn.entities.Complaint;
 import dev.evanishyn.services.interfaces.ComplaintService;
 
+import java.util.List;
+
 public class ComplaintServiceImpl implements ComplaintService {
 
     private ComplaintDAO complaintDAO;
@@ -22,6 +24,11 @@ public class ComplaintServiceImpl implements ComplaintService {
         return this.complaintDAO.createComplaint(complaint);
 
 //        throw new RuntimeException("The id for complaint is no good");
+    }
+
+    @Override
+    public List<Complaint> getAllComplaints() {
+        return complaintDAO.getAllComplaints();
     }
 
 

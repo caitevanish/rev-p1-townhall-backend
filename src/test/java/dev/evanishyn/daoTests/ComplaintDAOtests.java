@@ -67,7 +67,7 @@ public class ComplaintDAOtests {
     //-----get [x2]-----
     // 1] get all complaints
     @Test
-    @Order(3)
+    @Order(3)   //Passed
     void get_all_complaints_dTest(){
         Complaint complaint2 = new Complaint(0, "The construction is messing with the ley lines", Status.PENDING, Priority.TBD, 0);
         Complaint complaint3 = new Complaint(0, "I'm quite sure my neighbor hexed me", Status.PENDING, Priority.TBD, 0);

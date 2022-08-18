@@ -10,6 +10,8 @@ import dev.evanishyn.utilities.enums.Status;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 public class ComplaintServiceTests {
 
     static ComplaintDAO complaintDAO = new ComplaintDAOPostgres();
@@ -25,18 +27,20 @@ public class ComplaintServiceTests {
         //When I get meeting id from db it is saying it's 0, not -1
     }
 
-
-
-
-
-
-
-
-
-
-
     //-----get [x2]-----
     // 1] get all complaints
+    @Test
+    void get_all_complaints_sTest(){
+        Complaint complaint2 = new Complaint(0, "The construction is messing with the ley lines", Status.PENDING, Priority.TBD, 0);
+        Complaint complaint3 = new Complaint(0, "I'm quite sure my neighbor hexed me", Status.PENDING, Priority.TBD, 0);
+
+        complaintDAO.createComplaint(complaint2);
+        complaintDAO.createComplaint(complaint3);
+
+        List<Complaint> complaintList = complaintDAO.getAllComplaints();
+        Assertions.assertEquals(3, complaintList.size());
+    }
+
 
     // 2] get complaint by id (Members)
 

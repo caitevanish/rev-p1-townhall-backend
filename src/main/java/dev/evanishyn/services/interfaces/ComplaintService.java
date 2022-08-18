@@ -5,8 +5,12 @@ package dev.evanishyn.services.interfaces;
 
 import dev.evanishyn.entities.Complaint;
 
+import java.util.List;
+
 public interface ComplaintService {
 
     Complaint createComplaint(Complaint complaint);
+
+    List<Complaint> getAllComplaints();
 
 }

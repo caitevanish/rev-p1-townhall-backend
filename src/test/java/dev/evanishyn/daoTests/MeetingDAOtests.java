@@ -13,7 +13,6 @@ import java.util.List;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 
 public class MeetingDAOtests {
-    //REfactor name to mat
 
 
     static MeetingDAOPostgres meetingDAO = new MeetingDAOPostgres();
@@ -61,7 +60,7 @@ public class MeetingDAOtests {
 
     @Test
     @Order(2)
-    void create_unsaved_meeting_entry(){
+    void create_default_unsaved_meeting_entry(){
         try(Connection conn = ConnectionUtil.createConnection()){
             String sql = "insert into meeting values(-1, 0, 'LOCATION TBD2222', 'No meeting agenda yet')";
             Statement st = conn.createStatement();

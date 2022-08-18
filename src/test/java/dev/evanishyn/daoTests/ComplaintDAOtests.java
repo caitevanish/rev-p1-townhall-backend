@@ -11,38 +11,30 @@ import org.junit.jupiter.api.*;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 
 public class ComplaintDAOtests {
 
-//    @Disabled
-//    @BeforeAll
-//    static void teardown(){
-//        try(Connection conn = ConnectionUtil.createConnection()){
-//            String sql = "drop table complaint";
-//            Statement statement = conn.createStatement();
-//            statement.execute(sql);
-//        }catch(SQLException e){
-//            e.printStackTrace();
-//        }
-//    }
+    static ComplaintDAOPostgres complaintDAO = new ComplaintDAOPostgres();
 
-    //Move to meetings in future
-//    @Disabled
-//    @BeforeAll
-//    static void set_default_meeting(){
-//        try(Connection conn = ConnectionUtil.createConnection()){
-//            String sql = "insert into meeting values(-1, 0, 'LOCATION TBD', 'No meeting agenda yet')";
-//            Statement statement = conn.createStatement();
-//            statement.execute(sql);
-//        }catch(SQLException e){
-//            e.printStackTrace();
-//        }
-//    }
-
+    @Disabled
     @BeforeAll
-    static void setup_complaint(){
+    static void teardown(){
+        try(Connection conn = ConnectionUtil.createConnection()){
+            String sql = "drop table complaint";
+            Statement statement = conn.createStatement();
+            statement.execute(sql);
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+
+    @Test
+    @Order(1)
+    void setup_complaint(){
         try(Connection conn = ConnectionUtil.createConnection()){
             String sql = "create table complaint(\n" +
                     "\tcomplaint_id serial primary key,\t\n" +
@@ -58,12 +50,12 @@ public class ComplaintDAOtests {
         }
     }
 
-    static ComplaintDAOPostgres complaintDAO = new ComplaintDAOPostgres();
+
 
     //-----post-----
 
     @Test
-    @Order(1)   //Passed
+    @Order(2)   //Passed
     void create_complaint_dTest(){
         Complaint complaint = new Complaint(0, "The neighbors are too loud", Status.PENDING, Priority.TBD, 0);
         Complaint savedComplaint = complaintDAO.createComplaint(complaint);
@@ -74,6 +66,18 @@ public class ComplaintDAOtests {
 
     //-----get [x2]-----
     // 1] get all complaints
+    @Test
+    @Order(3)
+    void get_all_complaints_dTest(){
+        Complaint complaint2 = new Complaint(0, "The construction is messing with the ley lines", Status.PENDING, Priority.TBD, 0);
+        Complaint complaint3 = new Complaint(0, "I'm quite sure my neighbor hexed me", Status.PENDING, Priority.TBD, 0);
+
+        complaintDAO.createComplaint(complaint2);
+        complaintDAO.createComplaint(complaint3);
+
+        List<Complaint> complaintList = complaintDAO.getAllComplaints();
+        Assertions.assertEquals(3, complaintList.size());
+    }
 
     // 2] get complaint by id (Members)
 

@@ -8,14 +8,18 @@ public class Complaint {
     private String description;
     private Status status;
     private Priority priority;
-    private int meet_id;  //need to get the meetingId...somehow
+    private int m_id;  //need to get the meetingId...somehow
 
-    public Complaint(int id, String description, Status status, Priority priority, int meet_id) {
+    public Complaint(int id, String description, Status status, Priority priority, int m_id) {
         this.id = id;
         this.description = description;
         this.status = status;
         this.priority = priority;
-        this.meet_id = meet_id;
+        this.m_id = m_id;
+    }
+
+    public Complaint() {
+
     }
 
     public int getId() {
@@ -50,12 +54,12 @@ public class Complaint {
         this.priority = priority;
     }
 
-    public int getMeet_id() {
-        return meet_id;
+    public int getM_id() {
+        return m_id;
     }
 
-    public void setMeet_id(int meet_id) {
-        this.meet_id = meet_id;
+    public void setM_id(int m_id) {
+        this.m_id = m_id;
     }
 
     @Override
@@ -65,7 +69,7 @@ public class Complaint {
                 ", description='" + description + '\'' +
                 ", status=" + status +
                 ", priority=" + priority +
-                ", meet_id=" + meet_id +
+                ", m_id=" + m_id +
                 '}';
     }
 }

@@ -6,6 +6,8 @@ import dev.evanishyn.utilities.enums.Priority;
 import dev.evanishyn.utilities.enums.Status;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class ComplaintDAOPostgres implements ComplaintDAO{
@@ -38,6 +40,31 @@ public class ComplaintDAOPostgres implements ComplaintDAO{
         }
     }
 
+    @Override
+    public List<Complaint> getAllComplaints() {
+        try (Connection conn = ConnectionUtil.createConnection()) {
+            String sql = "select * from complaint";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            List<Complaint> complaintList = new ArrayList<>();
+
+            while(rs.next()){
+                Complaint complaint = new Complaint();
+                complaint.setId(rs.getInt("complaint_id"));
+                complaint.setDescription(rs.getString("description"));
+                complaint.setStatus(Status.valueOf(rs.getString("status")));
+                complaint.setPriority(Priority.valueOf(rs.getString("priority")));
+                complaint.setM_id(rs.getInt("m_id"));
+                complaintList.add(complaint);
+            }
+            return complaintList;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     //-----get [x2]-----
     // 1] get all complaints

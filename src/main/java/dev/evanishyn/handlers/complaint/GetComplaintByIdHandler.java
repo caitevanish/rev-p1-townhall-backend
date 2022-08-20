@@ -22,7 +22,7 @@ public class GetComplaintByIdHandler implements Handler {
         }
         else{
             ctx.status(404);
-            ctx.result("Error in retrieving complaint by id "+ complaint.getId());
+            ctx.result("Error in retrieving complaint by id "+ complaint.getComplaint_id());
         }
     }
 }

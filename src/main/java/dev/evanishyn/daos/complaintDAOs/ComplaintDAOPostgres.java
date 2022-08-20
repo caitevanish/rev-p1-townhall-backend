@@ -30,7 +30,7 @@ public class ComplaintDAOPostgres implements ComplaintDAO{
             rs.next();
 
             int generateKey = rs.getInt("complaint_id");
-            complaint.setId(generateKey);
+            complaint.setComplaint_id(generateKey);
 //            complaint.setStatus(Status.PENDING);
             return complaint;
 
@@ -53,7 +53,7 @@ public class ComplaintDAOPostgres implements ComplaintDAO{
 
             while(rs.next()){
                 Complaint complaint = new Complaint();
-                complaint.setId(rs.getInt("complaint_id"));
+                complaint.setComplaint_id(rs.getInt("complaint_id"));
                 complaint.setDescription(rs.getString("description"));
                 complaint.setStatus(Status.valueOf(rs.getString("status")));
                 complaint.setPriority(Priority.valueOf(rs.getString("priority")));
@@ -79,7 +79,7 @@ public class ComplaintDAOPostgres implements ComplaintDAO{
             rs.next();
 
                 Complaint complaint = new Complaint();
-                complaint.setId(rs.getInt("complaint_id"));
+                complaint.setComplaint_id(rs.getInt("complaint_id"));
                 complaint.setDescription(rs.getString("description"));
                 complaint.setStatus(Status.valueOf(rs.getString("status")));
                 complaint.setPriority(Priority.valueOf(rs.getString("priority")));

@@ -4,14 +4,14 @@ import dev.evanishyn.utilities.enums.Priority;
 import dev.evanishyn.utilities.enums.Status;
 
 public class Complaint {
-    private int id;
+    private int complaint_id;
     private String description;
     private Status status;
     private Priority priority;
     private int m_id;  //need to get the meetingId...somehow
 
-    public Complaint(int id, String description, Status status, Priority priority, int m_id) {
-        this.id = id;
+    public Complaint(int complaint_id, String description, Status status, Priority priority, int m_id) {
+        this.complaint_id = complaint_id;
         this.description = description;
         this.status = status;
         this.priority = priority;
@@ -22,12 +22,12 @@ public class Complaint {
 
     }
 
-    public int getId() {
-        return id;
+    public int getComplaint_id() {
+        return complaint_id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setComplaint_id(int complaint_id) {
+        this.complaint_id = complaint_id;
     }
 
     public String getDescription() {
@@ -65,7 +65,7 @@ public class Complaint {
     @Override
     public String toString() {
         return "Complaint{" +
-                "id=" + id +
+                "complaint_id=" + complaint_id +
                 ", description='" + description + '\'' +
                 ", status=" + status +
                 ", priority=" + priority +

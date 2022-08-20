@@ -17,7 +17,7 @@ public class CreateNewComplaintHandler implements Handler {
     String newJson = gson.toJson(newComplaint);
 
     ctx.status(201);
-    ctx.result("Complaint has been submitted: \n" + newJson);
+    ctx.result(newJson);
 }
 //throw an exception
 }

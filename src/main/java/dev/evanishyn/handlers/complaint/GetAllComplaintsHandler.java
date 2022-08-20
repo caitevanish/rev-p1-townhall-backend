@@ -19,7 +19,7 @@ public class GetAllComplaintsHandler implements Handler {
             String json = gson.toJson(complaintList);
 
             ctx.status(200);    //Don't ever put in 204
-            ctx.result("Here are all the complaints:\n" + json);
+            ctx.result(json);
 
         } else{
             ctx.status(404);

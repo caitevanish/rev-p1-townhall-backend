@@ -18,7 +18,7 @@ public class GetComplaintByIdHandler implements Handler {
             Gson gson = new Gson();
             String json = gson.toJson(complaint);
             ctx.status(200);
-            ctx.result("The complaint you requested:" + json);
+            ctx.result(json);
         }
         else{
             ctx.status(404);

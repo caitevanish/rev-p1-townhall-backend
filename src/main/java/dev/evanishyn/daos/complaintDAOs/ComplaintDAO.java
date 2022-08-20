@@ -16,12 +16,11 @@ public interface ComplaintDAO {
     // 2] get complaint by id (Members)
     Complaint getComplaintById(int id);
 
-    //-----put-----
-
     //-----patch [x2]-----
-    // 1] update status
+    // 1] Member: Patch a complaint's pritority and status
 
-    // 2] update priority
+    // 2] Member: Attach a complaint to a meeting
+
 
     //-----delete-----
 

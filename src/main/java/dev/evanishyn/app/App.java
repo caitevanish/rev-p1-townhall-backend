@@ -13,6 +13,7 @@ import dev.evanishyn.services.MeetingServiceImpl;
 import dev.evanishyn.services.interfaces.ComplaintService;
 import dev.evanishyn.services.interfaces.MeetingService;
 import io.javalin.Javalin;
+import io.javalin.core.JavalinConfig;
 import io.javalin.http.Handler;
 
 public class App {
@@ -22,6 +23,7 @@ public class App {
 
     public static void main(String[] args) {
         Javalin app = Javalin.create(config->{  //Statement lambda can be replaced with expression lambda
+            config.enableDevLogging();
             config.enableCorsForAllOrigins();   //Lambda can be replaced with method reference
         });
         //wrap a try-with resources statement
@@ -37,6 +39,8 @@ public class App {
         CreateNewComplaintHandler createNewComplaintHandler = new CreateNewComplaintHandler();
         GetAllComplaintsHandler getAllComplaintsHandler = new GetAllComplaintsHandler();
         GetComplaintByIdHandler getComplaintByIdHandler = new GetComplaintByIdHandler();
+        //Member: Patch a complaint's pritority and status
+        //Member: Attach a complaint to a meeting
 
         app.post("/complaints", createNewComplaintHandler);
         app.get("/complaints", getAllComplaintsHandler);
@@ -47,7 +51,6 @@ public class App {
         CreateNewMeetingHandler createNewMeetingHandler = new CreateNewMeetingHandler();
         GetAllMeetingsHandler getAllMeetingsHandler = new GetAllMeetingsHandler();
         GetMeetingByIdHandler getMeetingByIdHandler = new GetMeetingByIdHandler();
-
 
         app.post("/meetings", createNewMeetingHandler);
         app.get("/meetings", getAllMeetingsHandler);

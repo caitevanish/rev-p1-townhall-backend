@@ -19,7 +19,8 @@ public class GetAllMeetingsHandler implements Handler {
         String json = gson.toJson(meetingList);
 
         ctx.status(200);    //Don't ever put in 204
-        ctx.result("Here are all the meetings:\n" + json);
+//        ctx.result("Here are all the meetings:\n" + json);
+        ctx.result(json);
 
         } else{
             ctx.status(404);

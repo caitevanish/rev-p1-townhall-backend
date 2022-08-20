@@ -19,7 +19,7 @@ public class CreateNewMeetingHandler implements Handler {
         String newJson = gson.toJson(newMeeting);
 
         ctx.status(201);
-        ctx.result("Meeting has been schedule: \n" + newJson);
+        ctx.result(newJson);
     }
         //throw an exception
 

@@ -17,7 +17,7 @@ public class GetMeetingByIdHandler implements Handler {
             Gson gson = new Gson();
             String json = gson.toJson(meeting);
             ctx.status(200);
-            ctx.result("The meeting you requested:" + json);
+            ctx.result(json);
         }
         else{
             ctx.status(404);

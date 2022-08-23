@@ -94,6 +94,19 @@ public class ComplaintDAOtests {
     // 1] update status
 
     // 2] update priority
+    @Test
+    @Order(5)
+    void update_complaint_StatusPrior_by_Id_dTest(){
+        Complaint updComplaint = complaintDAO.getComplaintById(1);
+        updComplaint.setStatus(Status.DENIED);
+        updComplaint.setPriority(Priority.LOW);
+        complaintDAO.updateComplaintDetails(updComplaint, updComplaint.getStatus(), updComplaint.getPriority());
+        Assertions.assertNotEquals(Status.PENDING, updComplaint.getStatus());
+    }
+
+//    @Test
+//    @Order(6)
+
 
     //-----delete-----
 

@@ -45,6 +45,7 @@ public class App {
         app.post("/complaints", createNewComplaintHandler);
         app.get("/complaints", getAllComplaintsHandler);
         app.get("/complaints/{id}", getComplaintByIdHandler);
+//        app.patch("/complaints/{id}/{status}/{priority}", updateComplaintById);
 
 
         //-----------Meeting-----------

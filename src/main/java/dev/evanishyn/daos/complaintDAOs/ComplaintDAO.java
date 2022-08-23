@@ -1,6 +1,8 @@
 package dev.evanishyn.daos.complaintDAOs;
 
 import dev.evanishyn.entities.Complaint;
+import dev.evanishyn.utilities.enums.Priority;
+import dev.evanishyn.utilities.enums.Status;
 
 import java.util.List;
 
@@ -18,6 +20,7 @@ public interface ComplaintDAO {
 
     //-----patch [x2]-----
     // 1] Member: Patch a complaint's pritority and status
+    Complaint updateComplaintDetails(Complaint complaint, Status status, Priority priority);
 
     // 2] Member: Attach a complaint to a meeting
 

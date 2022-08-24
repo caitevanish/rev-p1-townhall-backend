@@ -104,8 +104,15 @@ public class ComplaintDAOtests {
         Assertions.assertNotEquals(Status.PENDING, updComplaint.getStatus());
     }
 
-//    @Test
-//    @Order(6)
+    @Test
+    @Order(6)
+    void update_complaint_with_meeting_id_dTest(){
+        Complaint complaint = complaintDAO.getComplaintById(1);
+        complaint.setmId(2);
+        complaintDAO.updateComplaintWithMeetingId(complaint, 2);
+        Assertions.assertNotEquals(-1, complaint.getmId());
+
+    }
 
 
     //-----delete-----

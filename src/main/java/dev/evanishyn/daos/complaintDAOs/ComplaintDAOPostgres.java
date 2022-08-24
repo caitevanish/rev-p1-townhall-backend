@@ -123,10 +123,19 @@ public class ComplaintDAOPostgres implements ComplaintDAO{
 
     @Override
     public Complaint updateComplaintWithMeetingId(Complaint complaint, int mId) {
-//        try(Connection conn = ConnectionUtil.createConnection()){
-//            String sql = "update complaint set mid = ? where complaintid = ?";
-//
-//        }
+        try(Connection conn = ConnectionUtil.createConnection()){
+            String sql = "update complaint set mid = ? where complaintid = ?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+
+            ps.setInt(1, mId);
+            ps.setInt(2, complaint.getComplaintId());
+            ps.executeUpdate();
+
+            return complaint;
+
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
         return null;
     }
 

@@ -4,6 +4,8 @@ package dev.evanishyn.services.interfaces;
 
 
 import dev.evanishyn.entities.Complaint;
+import dev.evanishyn.utilities.enums.Priority;
+import dev.evanishyn.utilities.enums.Status;
 
 import java.util.List;
 
@@ -14,5 +16,7 @@ public interface ComplaintService {
     List<Complaint> getAllComplaints();
 
     Complaint getComplaintById(int id);
+
+    Complaint updateComplaintDetails(Complaint complaint, Status status, Priority priority);
 
 }

@@ -3,6 +3,8 @@ package dev.evanishyn.services;
 import dev.evanishyn.daos.complaintDAOs.ComplaintDAO;
 import dev.evanishyn.entities.Complaint;
 import dev.evanishyn.services.interfaces.ComplaintService;
+import dev.evanishyn.utilities.enums.Priority;
+import dev.evanishyn.utilities.enums.Status;
 
 import java.util.List;
 
@@ -43,6 +45,10 @@ public class ComplaintServiceImpl implements ComplaintService {
     }
 
 
+    @Override
+    public Complaint updateComplaintDetails(Complaint complaint, Status status, Priority priority) {
+        return this.complaintDAO.updateComplaintDetails(complaint,status,priority);
+    }
 
 
     //-----put-----

@@ -86,7 +86,10 @@ public class ComplaintDAOPostgres implements ComplaintDAO{
                 complaint.setPriority(Priority.valueOf(rs.getString("priority")));
                 complaint.setM_id(rs.getInt("m_id"));
 
+
                 return complaint;
+
+
 
         }catch(SQLException e){
             e.printStackTrace();

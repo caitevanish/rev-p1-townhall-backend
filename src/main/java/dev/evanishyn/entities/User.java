@@ -1,36 +1,36 @@
 package dev.evanishyn.entities;
 
-import dev.evanishyn.utilities.enums.Role;
+import dev.evanishyn.utilities.enums.AcctType;
 
 public class User {
-    private int id;
+    private int userId;
     private String username;
     private String password;
     private String fName;
     private String lName;
 
-    private Role role;
+    private AcctType acctType;
 
 
     public User(){
 
     }
 
-    public User(int id, String username, String password, String fName, String lName, Role role) {
-        this.id = id;
+    public User(int userId, String username, String password, String fName, String lName, AcctType acctType) {
+        this.userId = userId;
         this.username = username;
         this.password = password;
         this.fName = fName;
         this.lName = lName;
-        this.role = role;
+        this.acctType = acctType;
     }
 
-    public int getId() {
-        return id;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public String getUsername() {
@@ -65,23 +65,23 @@ public class User {
         this.lName = lName;
     }
 
-    public Role getRole() {
-        return role;
+    public AcctType getAcctType() {
+        return acctType;
     }
 
-    public void setRole(Role role) {
-        this.role = role;
+    public void setAcctType(AcctType acctType) {
+        this.acctType = acctType;
     }
 
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
+                "userid=" + userId +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", fName='" + fName + '\'' +
                 ", lName='" + lName + '\'' +
-                ", role=" + role +
+                ", accttype=" + acctType +
                 '}';
     }
 }

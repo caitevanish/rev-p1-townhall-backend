@@ -1,5 +1,5 @@
 package dev.evanishyn.utilities.enums;
 
-public enum Role {
+public enum AcctType {
     MEMBER, CONSTITUENT
 }

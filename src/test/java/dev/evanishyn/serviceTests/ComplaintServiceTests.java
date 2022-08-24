@@ -52,7 +52,15 @@ public class ComplaintServiceTests {
         Complaint complaint = complaintDAO.getComplaintById(2);
         Assertions.assertEquals("The construction is messing with the ley lines", complaint.getDescription());
     }
-
+//
+    @Test
+    @Order(4)
+    void update_complaint_test(){
+        Complaint complaint = new Complaint(3, "The vibe in this room is awful", Status.APPROVED, Priority.LOW, 0);
+        complaintService.updateComplaintDetails(complaint, complaint.getStatus(), complaint.getPriority());
+        Complaint newComplaint = complaintService.getComplaintById(3);
+        Assertions.assertEquals(Priority.LOW, newComplaint.getPriority());
+    }
 
     //-----put-----
 

@@ -6,10 +6,7 @@ import dev.evanishyn.daos.meetingDAOs.MeetingDAOPostgres;
 import dev.evanishyn.daos.userDAOS.UserDaoPostgres;
 import dev.evanishyn.dtos.LoginCredentials;
 import dev.evanishyn.entities.User;
-import dev.evanishyn.handlers.complaint.CreateNewComplaintHandler;
-import dev.evanishyn.handlers.complaint.GetAllComplaintsHandler;
-import dev.evanishyn.handlers.complaint.GetComplaintByIdHandler;
-import dev.evanishyn.handlers.complaint.UpdateComplaintStatPriorHandler;
+import dev.evanishyn.handlers.complaint.*;
 import dev.evanishyn.handlers.meeting.CreateNewMeetingHandler;
 import dev.evanishyn.handlers.meeting.GetAllMeetingsHandler;
 import dev.evanishyn.handlers.meeting.GetMeetingByIdHandler;
@@ -56,12 +53,13 @@ public class App {
         //Member: Patch a complaint's pritority and status
         UpdateComplaintStatPriorHandler updateComplaintStatPriorHandler = new UpdateComplaintStatPriorHandler();
         //Member: Attach a complaint to a meeting
+        UpdateComplaintWithMeetingIdHandler updateComplaintWithMeetingIdHandler = new UpdateComplaintWithMeetingIdHandler();
 
         app.post("/complaints", createNewComplaintHandler);
         app.get("/complaints", getAllComplaintsHandler);
         app.get("/complaints/{id}", getComplaintByIdHandler);
         app.put("/complaints/{id}/{status}/{priority}", updateComplaintStatPriorHandler);
-
+        app.put("/complaints/{id}/meeting/{mid}", updateComplaintWithMeetingIdHandler);
 
         //-----------Meeting-----------
         CreateNewMeetingHandler createNewMeetingHandler = new CreateNewMeetingHandler();

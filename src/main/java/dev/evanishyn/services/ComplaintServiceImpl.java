@@ -50,6 +50,12 @@ public class ComplaintServiceImpl implements ComplaintService {
         return this.complaintDAO.updateComplaintDetails(complaint,status,priority);
     }
 
+    @Override
+    public Complaint updateComplaintWithMeetingId(Complaint complaint, int mid) {
+        return this.complaintDAO.updateComplaintWithMeetingId(complaint, mid);
+
+    }
+
 
     //-----put-----
 

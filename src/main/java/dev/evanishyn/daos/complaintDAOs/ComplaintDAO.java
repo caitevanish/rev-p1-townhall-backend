@@ -23,7 +23,7 @@ public interface ComplaintDAO {
     Complaint updateComplaintDetails(Complaint complaint, Status status, Priority priority);
 
     // 2] Member: Attach a complaint to a meeting
-
+    Complaint updateComplaintWithMeetingId(Complaint complaint, int meetId);
 
     //-----delete-----
 

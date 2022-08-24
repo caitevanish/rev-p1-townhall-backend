@@ -4,30 +4,30 @@ import dev.evanishyn.utilities.enums.Priority;
 import dev.evanishyn.utilities.enums.Status;
 
 public class Complaint {
-    private int complaint_id;
+    private int complaintId;
     private String description;
     private Status status;
     private Priority priority;
-    private int m_id;  //need to get the meetingId...somehow
+    private int mId;  //need to get the meetingId...somehow
 
-    public Complaint(int complaint_id, String description, Status status, Priority priority, int m_id) {
-        this.complaint_id = complaint_id;
+    public Complaint(int complaintId, String description, Status status, Priority priority, int mId) {
+        this.complaintId = complaintId;
         this.description = description;
         this.status = status;
         this.priority = priority;
-        this.m_id = m_id;
+        this.mId = mId;
     }
 
     public Complaint() {
 
     }
 
-    public int getComplaint_id() {
-        return complaint_id;
+    public int getComplaintId() {
+        return complaintId;
     }
 
-    public void setComplaint_id(int complaint_id) {
-        this.complaint_id = complaint_id;
+    public void setComplaintId(int complaintId) {
+        this.complaintId = complaintId;
     }
 
     public String getDescription() {
@@ -54,22 +54,22 @@ public class Complaint {
         this.priority = priority;
     }
 
-    public int getM_id() {
-        return m_id;
+    public int getmId() {
+        return mId;
     }
 
-    public void setM_id(int m_id) {
-        this.m_id = m_id;
+    public void setmId(int mId) {
+        this.mId = mId;
     }
 
     @Override
     public String toString() {
         return "Complaint{" +
-                "complaint_id=" + complaint_id +
+                "complaintid=" + complaintId +
                 ", description='" + description + '\'' +
                 ", status=" + status +
                 ", priority=" + priority +
-                ", m_id=" + m_id +
+                ", mid=" + mId +
                 '}';
     }
 }

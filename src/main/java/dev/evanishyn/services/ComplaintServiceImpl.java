@@ -18,7 +18,7 @@ public class ComplaintServiceImpl implements ComplaintService {
     @Override
     public Complaint createComplaint(Complaint complaint) {
         //check for id
-        if (complaint.getComplaint_id() != 0) {
+        if (complaint.getComplaintId() != 0) {
             if(complaint.getDescription().length() < 20) {    //check for enough description
                 throw new RuntimeException("Need a more detailed description");
             }

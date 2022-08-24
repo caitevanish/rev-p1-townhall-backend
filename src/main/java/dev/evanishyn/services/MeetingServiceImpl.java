@@ -16,7 +16,7 @@ public class MeetingServiceImpl implements MeetingService {
     @Override
     //Must add that ONLY council member account types can make a meeting
     public Meeting createMeeting(Meeting meeting) {
-        if(meeting.getMeet_id()!=0){
+        if(meeting.getMeetId()!=0){
             if(meeting.getSummary().length()<20){
                 throw new RuntimeException("Need a more detailed description");
             }

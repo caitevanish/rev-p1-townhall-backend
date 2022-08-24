@@ -19,7 +19,7 @@ public class ComplaintDAOtests {
 
     static ComplaintDAOPostgres complaintDAO = new ComplaintDAOPostgres();
 
-    @Disabled
+//    @Disabled
     @BeforeAll
     static void teardown(){
         try(Connection conn = ConnectionUtil.createConnection()){
@@ -37,11 +37,11 @@ public class ComplaintDAOtests {
     void setup_complaint(){
         try(Connection conn = ConnectionUtil.createConnection()){
             String sql = "create table complaint(\n" +
-                    "\tcomplaint_id serial primary key,\t\n" +
+                    "\tcomplaintid serial primary key,\t\n" +
                     "\tdescription varchar(2000) not null,\n" +
                     "\tstatus varchar(10) default 'PENDING',\n" +
                     "\tpriority varchar(10) default 'TBD' ,\n" +
-                    "\tm_id int references meeting(meet_id) default -1\n" +
+                    "\tmid int references meeting(meetid) default -1\n" +
                     ")";
             Statement st = conn.createStatement();  //Check for null pointer Exception!
             st.execute(sql);
@@ -59,7 +59,7 @@ public class ComplaintDAOtests {
     void create_complaint_dTest(){
         Complaint complaint = new Complaint(0, "The neighbors are too loud", Status.PENDING, Priority.TBD, 0);
         Complaint savedComplaint = complaintDAO.createComplaint(complaint);
-        Assertions.assertNotEquals(0, savedComplaint.getComplaint_id());
+        Assertions.assertNotEquals(0, savedComplaint.getComplaintId());
     }
 
 

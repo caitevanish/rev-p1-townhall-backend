@@ -29,8 +29,8 @@ public class ComplaintDAOPostgres implements ComplaintDAO{
             ResultSet rs = ps.getGeneratedKeys();
             rs.next();
 
-            int generateKey = rs.getInt("complaint_id");
-            complaint.setComplaint_id(generateKey);
+            int generateKey = rs.getInt("complaintid");
+            complaint.setComplaintId(generateKey);
 //            complaint.setStatus(Status.PENDING);
             return complaint;
 
@@ -53,11 +53,11 @@ public class ComplaintDAOPostgres implements ComplaintDAO{
 
             while(rs.next()){
                 Complaint complaint = new Complaint();
-                complaint.setComplaint_id(rs.getInt("complaint_id"));
+                complaint.setComplaintId(rs.getInt("complaintid"));
                 complaint.setDescription(rs.getString("description"));
                 complaint.setStatus(Status.valueOf(rs.getString("status")));
                 complaint.setPriority(Priority.valueOf(rs.getString("priority")));
-                complaint.setM_id(rs.getInt("m_id"));
+                complaint.setmId(rs.getInt("mid"));
                 complaintList.add(complaint);
             }
             return complaintList;
@@ -72,7 +72,7 @@ public class ComplaintDAOPostgres implements ComplaintDAO{
     @Override
     public Complaint getComplaintById(int id) {
         try (Connection conn = ConnectionUtil.createConnection()){
-            String sql = "select * from complaint where complaint_id = ?";
+            String sql = "select * from complaint where complaintid = ?";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, id);
 
@@ -80,11 +80,11 @@ public class ComplaintDAOPostgres implements ComplaintDAO{
             rs.next();
 
                 Complaint complaint = new Complaint();
-                complaint.setComplaint_id(rs.getInt("complaint_id"));
+                complaint.setComplaintId(rs.getInt("complaintid"));
                 complaint.setDescription(rs.getString("description"));
                 complaint.setStatus(Status.valueOf(rs.getString("status")));
                 complaint.setPriority(Priority.valueOf(rs.getString("priority")));
-                complaint.setM_id(rs.getInt("m_id"));
+                complaint.setmId(rs.getInt("mid"));
 
 
                 return complaint;
@@ -105,11 +105,11 @@ public class ComplaintDAOPostgres implements ComplaintDAO{
     @Override
     public Complaint updateComplaintDetails(Complaint complaint, Status status, Priority priority) {
         try(Connection conn = ConnectionUtil.createConnection()){
-            String sql = "update complaint set status = ?, priority = ? where complaint_id = ?";
+            String sql = "update complaint set status = ?, priority = ? where complaintid = ?";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, status.name());
             ps.setString(2, priority.name());
-            ps.setInt(3, complaint.getComplaint_id());
+            ps.setInt(3, complaint.getComplaintId());
 
             ps.executeUpdate();
             return complaint;
@@ -121,6 +121,14 @@ public class ComplaintDAOPostgres implements ComplaintDAO{
         return null;
     }
 
+    @Override
+    public Complaint updateComplaintWithMeetingId(Complaint complaint, int mId) {
+//        try(Connection conn = ConnectionUtil.createConnection()){
+//            String sql = "update complaint set mid = ? where complaintid = ?";
+//
+//        }
+        return null;
+    }
 
 
     //-----delete-----

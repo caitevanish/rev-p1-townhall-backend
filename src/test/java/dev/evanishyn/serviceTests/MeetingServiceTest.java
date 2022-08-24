@@ -23,7 +23,7 @@ public class MeetingServiceTest {
     void create_meeting_sTest(){
         Meeting newMeeting = new Meeting(0, 1661288424, "The Poisoned Pen", "Hogs got swine flu and turning green");
         Meeting savedMeeting = meetingService.createMeeting(newMeeting);
-        Assertions.assertNotEquals(-1, savedMeeting.getMeet_id());
+        Assertions.assertNotEquals(-1, savedMeeting.getMeetId());
     }
 
 

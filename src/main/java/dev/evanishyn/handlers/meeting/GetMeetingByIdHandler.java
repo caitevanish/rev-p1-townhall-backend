@@ -21,7 +21,7 @@ public class GetMeetingByIdHandler implements Handler {
         }
         else{
             ctx.status(404);
-            ctx.result("Error in retrieving meeting by id "+ meeting.getMeet_id());
+            ctx.result("Error in retrieving meeting by id "+ meeting.getMeetId());
         }
     }
 }

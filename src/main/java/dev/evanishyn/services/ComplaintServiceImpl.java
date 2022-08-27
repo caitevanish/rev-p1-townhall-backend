@@ -46,8 +46,13 @@ public class ComplaintServiceImpl implements ComplaintService {
 
 
     @Override
-    public Complaint updateComplaintDetails(Complaint complaint, Status status, Priority priority) {
-        return this.complaintDAO.updateComplaintDetails(complaint,status,priority);
+    public Complaint updateComplaintStatus(Complaint complaint, Status status) {
+        return this.complaintDAO.updateComplaintStatus(complaint, status);
+    }
+
+    @Override
+    public Complaint updateComplaintPriority(Complaint complaint, Priority priority) {
+        return this.complaintDAO.updateComplaintPriority(complaint, priority);
     }
 
     @Override
@@ -56,17 +61,5 @@ public class ComplaintServiceImpl implements ComplaintService {
 
     }
 
-
-    //-----put-----
-
-    //-----patch [x2]-----
-    // 1] update status
-
-    // 2] update priority
-
-    //-----delete-----
-    
-    
-    
 
 }

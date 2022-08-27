@@ -50,15 +50,22 @@ public class App {
         CreateNewComplaintHandler createNewComplaintHandler = new CreateNewComplaintHandler();
         GetAllComplaintsHandler getAllComplaintsHandler = new GetAllComplaintsHandler();
         GetComplaintByIdHandler getComplaintByIdHandler = new GetComplaintByIdHandler();
-        //Member: Patch a complaint's pritority and status
-        UpdateComplaintStatPriorHandler updateComplaintStatPriorHandler = new UpdateComplaintStatPriorHandler();
-        //Member: Attach a complaint to a meeting
+        //Member: Patch a complaint's pritority and status and meeting id
+        //[Status]
+        UpdateComplaintStatusHandler updateComplaintStatusHandler = new UpdateComplaintStatusHandler();
+        //[Status]
+        UpdateComplaintPriorityHandler updateComplaintPriorityHandler = new UpdateComplaintPriorityHandler();
+        //[Meeting]
         UpdateComplaintWithMeetingIdHandler updateComplaintWithMeetingIdHandler = new UpdateComplaintWithMeetingIdHandler();
 
         app.post("/complaints", createNewComplaintHandler);
         app.get("/complaints", getAllComplaintsHandler);
         app.get("/complaints/{id}", getComplaintByIdHandler);
-        app.put("/complaints/{id}/{status}/{priority}", updateComplaintStatPriorHandler);
+        //[Status]
+        app.put("/complaints/{id}/{status}", updateComplaintStatusHandler);
+        //[Status]
+        app.put("/complaints/{id}/{priority}", updateComplaintPriorityHandler);
+        //[Meeting]
         app.put("/complaints/{id}/meeting/{mid}", updateComplaintWithMeetingIdHandler);
 
         //-----------Meeting-----------

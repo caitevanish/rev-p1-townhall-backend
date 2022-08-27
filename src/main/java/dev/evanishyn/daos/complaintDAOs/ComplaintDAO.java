@@ -20,7 +20,9 @@ public interface ComplaintDAO {
 
     //-----patch [x2]-----
     // 1] Member: Patch a complaint's pritority and status
-    Complaint updateComplaintDetails(Complaint complaint, Status status, Priority priority);
+    Complaint updateComplaintStatus(Complaint complaint, Status status);
+
+    Complaint updateComplaintPriority(Complaint complaint, Priority priority);
 
     // 2] Member: Attach a complaint to a meeting
     Complaint updateComplaintWithMeetingId(Complaint complaint, int meetId);

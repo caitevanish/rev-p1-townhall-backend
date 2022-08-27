@@ -96,20 +96,28 @@ public class ComplaintDAOtests {
     // 2] update priority
     @Test
     @Order(5)
-    void update_complaint_StatusPrior_by_Id_dTest(){
+    void update_complaint_Status_by_Id_dTest(){
         Complaint updComplaint = complaintDAO.getComplaintById(1);
         updComplaint.setStatus(Status.DENIED);
-        updComplaint.setPriority(Priority.LOW);
-        complaintDAO.updateComplaintDetails(updComplaint, updComplaint.getStatus(), updComplaint.getPriority());
+        complaintDAO.updateComplaintStatus(updComplaint, updComplaint.getStatus());
         Assertions.assertNotEquals(Status.PENDING, updComplaint.getStatus());
     }
 
     @Test
     @Order(6)
+    void update_complaint_Priority_by_Id_dTest(){
+        Complaint updComplaint = complaintDAO.getComplaintById(1);
+        updComplaint.setPriority(Priority.LOW);
+        complaintDAO.updateComplaintPriority(updComplaint, updComplaint.getPriority());
+        Assertions.assertNotEquals(Priority.TBD, updComplaint.getPriority());
+    }
+
+    @Test
+    @Order(7)
     void update_complaint_with_meeting_id_dTest(){
         Complaint complaint = complaintDAO.getComplaintById(1);
-        complaint.setmId(2);
-        complaintDAO.updateComplaintWithMeetingId(complaint, 2);
+        complaint.setmId(1);
+        complaintDAO.updateComplaintWithMeetingId(complaint, 1);
         Assertions.assertNotEquals(-1, complaint.getmId());
 
     }

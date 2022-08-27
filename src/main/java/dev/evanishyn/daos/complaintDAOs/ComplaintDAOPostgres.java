@@ -100,21 +100,33 @@ public class ComplaintDAOPostgres implements ComplaintDAO{
     //-----patch [x2]-----
     // 1] update status
 
-    // 2] update priority
 
     @Override
-    public Complaint updateComplaintDetails(Complaint complaint, Status status, Priority priority) {
+    public Complaint updateComplaintStatus(Complaint complaint, Status status) {
         try(Connection conn = ConnectionUtil.createConnection()){
-            String sql = "update complaint set status = ?, priority = ? where complaintid = ?";
+            String sql = "update complaint set status = ? where complaintid = ?";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, status.name());
-            ps.setString(2, priority.name());
-            ps.setInt(3, complaint.getComplaintId());
+            ps.setInt(2, complaint.getComplaintId());
 
             ps.executeUpdate();
             return complaint;
 
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+    // 2] update priority
+    public Complaint updateComplaintPriority(Complaint complaint, Priority priority){
+        try(Connection conn = ConnectionUtil.createConnection()){
+            String sql = "update complaint set priority = ? where complaintid = ?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, priority.name());
+            ps.setInt(2, complaint.getComplaintId());
 
+            ps.executeUpdate();
+            return complaint;
         }catch(SQLException e){
             e.printStackTrace();
         }

@@ -18,6 +18,9 @@ public interface ComplaintDAO {
     // 2] get complaint by id (Members)
     Complaint getComplaintById(int id);
 
+
+    Complaint updateComplaintForm(Complaint complaint);
+
     //-----patch [x2]-----
     // 1] Member: Patch a complaint's pritority and status
     Complaint updateComplaintStatus(Complaint complaint, Status status);

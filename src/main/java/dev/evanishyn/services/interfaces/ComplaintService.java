@@ -17,6 +17,8 @@ public interface ComplaintService {
 
     Complaint getComplaintById(int id);
 
+    Complaint updateComplaintForm(Complaint complaint);
+
     Complaint updateComplaintStatus(Complaint complaint, Status status);
 
     Complaint updateComplaintPriority(Complaint complaint, Priority priority);

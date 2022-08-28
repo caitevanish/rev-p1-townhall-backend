@@ -44,6 +44,11 @@ public class ComplaintServiceImpl implements ComplaintService {
         return complaintDAO.getComplaintById(id);
     }
 
+    @Override
+    public Complaint updateComplaintForm(Complaint complaint) {
+        return this.complaintDAO.updateComplaintForm(complaint);
+    }
+
 
     @Override
     public Complaint updateComplaintStatus(Complaint complaint, Status status) {

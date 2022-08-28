@@ -50,7 +50,8 @@ public class App {
         CreateNewComplaintHandler createNewComplaintHandler = new CreateNewComplaintHandler();
         GetAllComplaintsHandler getAllComplaintsHandler = new GetAllComplaintsHandler();
         GetComplaintByIdHandler getComplaintByIdHandler = new GetComplaintByIdHandler();
-        //Member: Patch a complaint's pritority and status and meeting id
+        //Form:
+        UpdateComplaintFormHandler updateComplaintFormHandler = new UpdateComplaintFormHandler();
         //[Status]
         UpdateComplaintStatusHandler updateComplaintStatusHandler = new UpdateComplaintStatusHandler();
         //[Status]
@@ -61,6 +62,10 @@ public class App {
         app.post("/complaints", createNewComplaintHandler);
         app.get("/complaints", getAllComplaintsHandler);
         app.get("/complaints/{id}", getComplaintByIdHandler);
+
+        //Form
+        app.put("/complaints/{id}", updateComplaintFormHandler);
+
         //[Status]
         app.put("/complaints/{id}/{status}", updateComplaintStatusHandler);
         //[Status]

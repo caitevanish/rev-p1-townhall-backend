@@ -72,12 +72,14 @@ public class ComplaintDAOtests {
     void get_all_complaints_dTest(){
         Complaint complaint2 = new Complaint(0, "The construction is messing with the ley lines", Status.PENDING, Priority.TBD, 0);
         Complaint complaint3 = new Complaint(0, "I'm quite sure my neighbor hexed me", Status.PENDING, Priority.TBD, 0);
+        Complaint complaint4 = new Complaint(0, "I'm quite sure my other neighbor ALSO cursed my cat", Status.APPROVED, Priority.TBD, 0);
 
         complaintDAO.createComplaint(complaint2);
         complaintDAO.createComplaint(complaint3);
+        complaintDAO.createComplaint(complaint4);
 
         List<Complaint> complaintList = complaintDAO.getAllComplaints();
-        Assertions.assertEquals(3, complaintList.size());
+        Assertions.assertEquals(4, complaintList.size());
     }
 
 //     2] get complaint by id (Members)
